@@ -1,0 +1,21 @@
+[package]
+name = "repro"
+version = "0.1.0"
+edition = "2021"
+authors = ["Paul Seyfert <Paul.Seyfert@sevensense.ch>"]
+license = "Closed"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+bincode = "1.2.1"
+
+[build-dependencies]
+cbindgen = "0.20.0"
+
+[package.metadata.deb]
+assets = [
+    ["target/header.h", "usr/include/sev/repro/", "644"],
+    ["target/release/librepro.so", "usr/lib/", "755"],
+]
